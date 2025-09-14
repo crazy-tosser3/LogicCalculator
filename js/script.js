@@ -1,38 +1,26 @@
 function replaceOps(expr) {
+    expr = expr.replace(/-(\w)/g, '¬$1');
 
-    while (expr.includes('→')) {
-        expr = expr.replace(
-            /(\([^()]+\)|[A-Z])\s*→\s*(\([^()]+\)|[A-Z])/g,
-            '((!$1) || $2)'
-        );
-    }
-
-    while (expr.includes('↔')) {
-        expr = expr.replace(
-            /(\([^()]+\)|[A-Z])\s*↔\s*(\([^()]+\)|[A-Z])/g,
-            '($1 === $2)'
-        );
-    }
-
+    expr = expr.replace(/(\([^()]*\)|[A-Z])\s*→\s*(\([^()]*\)|[A-Z])/g, '((!($1)) || ($2))');
+    expr = expr.replace(/(\([^()]*\)|[A-Z])\s*↔\s*(\([^()]*\)|[A-Z])/g, '($1 === $2)');
 
     expr = expr.replace(/¬/g, '!');
     expr = expr.replace(/∧/g, '&&');
     expr = expr.replace(/∨/g, '||');
-    expr = expr.replace(/⊕/g, '!=='); 
+    expr = expr.replace(/⊕/g, '!==');
 
     return expr;
 }
 
 function evalExpr(expr, values) {
-
     let processedExpr = expr;
+
     for (const [varName, value] of Object.entries(values)) {
         const regex = new RegExp(`\\b${varName}\\b`, 'g');
         processedExpr = processedExpr.replace(regex, value ? 'true' : 'false');
     }
 
     try {
-
         const result = new Function(`return ${processedExpr}`)();
         return result ? 1 : 0;
     } catch (error) {
@@ -40,6 +28,7 @@ function evalExpr(expr, values) {
         throw error;
     }
 }
+
 
 function extractSubexpressions(expr) {
     const subexprs = new Set();
