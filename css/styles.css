@@ -1,0 +1,215 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --md-sys-color-primary: #006A60;
+  --md-sys-color-on-primary: #FFFFFF;
+  
+  --md-sys-color-surface: #1C1B1F;
+  --md-sys-color-on-surface: #E6E1E5;
+
+  --md-sys-color-surface-container: #2C2A30;
+  --md-sys-color-surface-container-high: #3C393F;
+  
+  --md-sys-color-on-surface-variant: #C5C6C9;
+  --md-sys-color-outline: #6E7976;
+  --md-sys-color-error: #B3261E;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--md-sys-color-surface-container);
+}
+
+table thead th {
+  font-weight: 500;
+  text-align: left;
+  padding: 16px 24px;
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--md-sys-color-outline);
+}
+
+table tbody td {
+  text-align: left;
+  padding: 16px 24px;
+  font-size: 1rem;
+  color: var(--md-sys-color-on-surface);
+  border-bottom: 1px solid var(--md-sys-color-outline);
+}
+
+table tbody tr:nth-child(even) {
+  background-color: var(--md-sys-color-surface);
+}
+
+table tbody tr:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+button {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  border-radius: 20px;
+  padding: 0 24px;
+  height: 40px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #008577;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #004D43;
+  transform: translateY(1px);
+}
+
+.md-card {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  border-radius: 12px;
+  padding: 16px;
+  width: 600px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s;
+}
+
+.md-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.md-card h1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--md-sys-color-on-surface);
+}
+
+.md-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.input-group label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  transition: transform 0.3s, font-size 0.3s;
+  pointer-events: none;
+}
+
+.input-group input {
+  width: 90%;
+  height: 16px;
+  padding: 24px 16px 8px;
+  border: none;
+  border-bottom: 1px solid var(--md-sys-color-outline);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.action-button .btn-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.action-button .btn-box p {font-size: 13px;}
+
+
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .md-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  table {
+    min-width: 600px; 
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  .action-button {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    padding: 10px;
+    
+  }
+
+  .action-button .btn-box {
+    margin: 6px 0;
+    padding: 10px;
+    
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    width: 100%;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .md-card h1 {
+    font-size: 1rem;
+  }
+
+  .md-card p {
+    font-size: 0.875rem;
+  }
+}

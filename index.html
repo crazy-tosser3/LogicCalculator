@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логический калькулятор</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="md-card">
+        <h1>Логический калькулятор</h1>
+        <div class="input-group">
+            <input type="text" id="expression" class="md-text-field" placeholder="A ∧ B → C" />
+            <section class="action-button">
+                <div class="btn-box">
+                    <button onclick="addText(this)">¬</button>
+                    <p>Отрицание</p>
+                </div>
+
+                <div class="btn-box">
+                    <button onclick="addText(this)">∧</button>
+                    <p>Конъюкция</p>
+                </div>
+
+                <div class="btn-box">
+                    <button onclick="addText(this)">∨</button>
+                    <p>Дизъюнкция</p>
+                </div>
+
+                <div class="btn-box">   
+                    <button onclick="addText(this)">⊕</button>
+                    <p>Искл Диз</p>
+                </div>
+
+                <div class="btn-box">
+                    <button onclick="addText(this)">↔</button>
+                    <p>Эквиваленция</p>
+                </div>
+
+                <div class="btn-box">
+                    <button onclick="addText(this)">→</button>
+                    <p>Импликация</p>
+                </div>
+            </section>
+
+            <button onclick="calculate()">Вычислить</button>
+        </div>
+        <div id="error" class="error"></div>
+        <div id="result"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/button.js"></script>
+</body>
+</html>
