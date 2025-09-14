@@ -90,10 +90,21 @@ function calculate() {
             return;
         }
 
-        const subexprs = extractSubexpressions(rawExpr);
-        
+        let subexprs = extractSubexpressions(rawExpr);
+
         if (!subexprs.includes(rawExpr) && rawExpr.length > 1) {
             subexprs.push(rawExpr);
+        }
+
+        const validSubexprs = [];
+        for (const sub of subexprs) {
+            try {
+                const jsExpr = replaceOps(sub);
+                evalExpr(jsExpr, Object.fromEntries(variables.map(v => [v, false])));
+                validSubexprs.push(sub); 
+            } catch (e) {
+                console.warn(sub);
+            }
         }
 
         let tableHTML = `
@@ -104,7 +115,7 @@ function calculate() {
                 <thead>
                     <tr>
                         ${variables.map(v => `<th>${v}</th>`).join('')}
-                        ${subexprs.map(sub => `<th>${sub}</th>`).join('')}
+                        ${validSubexprs.map(sub => `<th>${sub}</th>`).join('')}
                     </tr>
                 </thead>
                 <tbody>
@@ -120,13 +131,12 @@ function calculate() {
 
             const row = [...combination.map(v => v ? '1' : '0')];
 
-            for (const sub of subexprs) {
+            for (const sub of validSubexprs) {
                 try {
                     const jsExpr = replaceOps(sub);
                     const res = evalExpr(jsExpr, valDict);
                     row.push(res.toString());
                 } catch (e) {
-                    row.push('E');
                 }
             }
 
@@ -167,3 +177,4 @@ document.getElementById('expression').addEventListener('keypress', function(e) {
         calculate();
     }
 });
+
