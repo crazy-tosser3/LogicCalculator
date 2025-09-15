@@ -3,11 +3,15 @@ function replaceOps(expr) {
 
     expr = expr.replace(/(\([^()]*\)|[A-Z])\s*→\s*(\([^()]*\)|[A-Z])/g, '((!($1)) || ($2))');
     expr = expr.replace(/(\([^()]*\)|[A-Z])\s*↔\s*(\([^()]*\)|[A-Z])/g, '($1 === $2)');
+    expr = expr.replace(/(\([^()]*\)|[A-Z])\s*\|?\s*(\([^()]*\)|[A-Z])/g, '!($1 && $2)');
+    expr = expr.replace(/(\([^()]*\)|[A-Z])\s*↓\s*(\([^()]*\)|[A-Z])/g, '!($1 || $2)');
+
 
     expr = expr.replace(/¬/g, '!');
     expr = expr.replace(/∧/g, '&&');
     expr = expr.replace(/∨/g, '||');
     expr = expr.replace(/⊕/g, '!==');
+
 
     return expr;
 }
@@ -47,7 +51,7 @@ function extractSubexpressions(expr) {
         }
     }
 
-    const operationPattern = /[∧∨→↔⊕¬]/;
+    const operationPattern = /[∧∨→↔⊕¬|↓]/;
     if (operationPattern.test(expr)) {
         subexprs.add(expr);
     }
@@ -177,4 +181,3 @@ document.getElementById('expression').addEventListener('keypress', function(e) {
         calculate();
     }
 });
-

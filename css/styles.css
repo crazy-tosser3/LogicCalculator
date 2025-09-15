@@ -87,7 +87,7 @@ button:active {
   color: var(--md-sys-color-on-surface);
   border-radius: 12px;
   padding: 16px;
-  width: 600px;
+  width: 750px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   transition: box-shadow 0.3s;
 }
