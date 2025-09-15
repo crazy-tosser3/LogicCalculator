@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="md-card">
+        <div class="head-btn">
+            <button class="info" onclick="showMessage()"><img src="img/info.png" alt="info.png"></button>
+            <a class="git" href="https://github.com/crazy-tosser3/LogicCalculator"><img src="img/github.png" alt="github.png">Код  проекта</a>
+        </div>
         <h1>Логический калькулятор</h1>
         <div class="input-group">
             <input type="text" id="expression" class="md-text-field" placeholder="A ∧ B → C" />
@@ -61,6 +65,42 @@
         <div id="result"></div>
     </div>
 
+
+    <div id='shadow'></div>
+    <div id='message'>
+        <p>
+            <strong>∧: Конъюнкция ("И")</strong><br>
+            Истинно, только если <b>оба</b> утверждения A и B истинны.
+        </p>
+        <p>
+            <strong>∨: Дизъюнкция ("ИЛИ")</strong><br>
+            Истинно, если <b>хотя бы одно</b> утверждение A или B истинно.
+        </p>
+        <p>
+            <strong>→: Импликация ("ЕСЛИ, ТО")</strong><br>
+            Ложно, только если A истинно, а B ложно.
+        </p>
+        <p>
+            <strong>↔: Эквиваленция ("ТОГДА И ТОЛЬКО ТОГДА")</strong><br>
+            Истинно, если A и B имеют <b>одинаковое</b> логическое значение.
+        </p>
+        <p>
+            <strong>⊕: Исключающее ИЛИ (XOR)</strong><br>
+            Истинно, если <b>только одно</b> из утверждений A или B истинно.
+        </p>
+        <p>
+            <strong>¬: Отрицание ("НЕ")</strong><br>
+            Меняет логическое значение A на <b>противоположное</b>.
+        </p>
+        <p>
+            <strong>|: Штрих Шеффера (NAND)</strong><br>
+            Ложно, только если <b>оба</b> утверждения A и B истинны.
+        </p>
+        <p>
+            <strong>↓: Стрелка Пирса (NOR)</strong><br>
+            Истинно, только если <b>оба</b> утверждения A и B ложны.
+        </p>
+    </div>
     <script src="js/script.js"></script>
     <script src="js/button.js"></script>
 </body>
